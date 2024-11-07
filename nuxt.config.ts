@@ -6,7 +6,8 @@ export default defineNuxtConfig({
     'shadcn-nuxt',
     '@nuxtjs/color-mode',
     '@nuxtjs/tailwindcss',
-    '@nuxt/image'
+    '@nuxt/image',
+    'nuxt-lucide-icons'
   ],
   plugins: [
     '@/plugins/lucide.js'
@@ -19,5 +20,8 @@ export default defineNuxtConfig({
     preference: 'system',
     fallback: 'light',
     classSuffix: '',
+  },
+  lucide: {
+    namePrefix: 'Icon'
   }
 })

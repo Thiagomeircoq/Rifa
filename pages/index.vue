@@ -1,104 +1,51 @@
-<script setup lang="ts">
-import { Button } from '@/components/ui/button'
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card'
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from '@/components/ui/tabs'
-import { Badge } from '@/components/ui/badge'
-import { ScrollArea } from '@/components/ui/scroll-area'
-
-import DateRangePicker from '../components/DataRangePicker.vue'
-import MainNav from '../components/MainNav.vue'
-import Overview from '../components/Overview.vue'
-import RecentSales from '../components/RecentSales.vue'
-
-import Search from '../components/Search.vue'
-import TeamSwitcher from '../components/TeamSwitcher.vue'
-import UserNav from '../components/UserNav.vue'
-import CotasContent from '../components/CotasContent.vue'
-</script>
-
 <template>
   <div class="flex-col md:flex">
-    <div class="border-b">
-      <div class="flex h-16 items-center px-4 container">
-        <div class="flex items-center mr-10">
-          <Avatar />
-        </div>
-        <MainNav class="mx-6" />
-        <div class="ml-auto flex items-center space-x-4">
-          <DarkMode />
-          <!-- <UserNav /> -->
-          <Button>Login</Button>
-        </div>
-      </div>
-    </div>
+    <Header />
   </div>
 
   <section class="flex-1 container p-5">
     <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-8">
+
       <Card class="col-span-3">
         <CardHeader class="flex flex-row items-center justify-between space-y-0 pb-2">
           <NuxtImg src="/img/exibe-numeros.png" class="w-full" />
+          <!-- <Skeleton className="w-full bg-slate-50 rounded-xl" /> -->
         </CardHeader>
         <CardContent>
-          <Button size="xs" class="w-full">
-            Ver meus números
+          <Button class="w-full">
+            R$ 2,50
           </Button>
-          <div class="flex items-center gap-1 mt-4">
-            <span class="text-sm">Campanha</span>
+          <CardDescription>
+            Campanha
             <Button size="xs" variant="ghost">16/05/25 ás 18h20</Button>
-          </div>
-        </CardContent>
-      </Card>
-      <Card class="col-span-5">
-        <CardHeader class="flex flex-row items-center justify-between space-y-0 pb-2">
-          <div class="flex items-center gap-1">
-            <span class="text-md font-bold">Cotas</span>
-            <span class="text-md">Escolha sua sorte</span>
-          </div>
-        </CardHeader>
-        <CardContent>
-          <ScrollArea class="h-96">
-            <CotasContent />
-          </ScrollArea>
-        </CardContent>
-      </Card>
-      <Card class="col-span-4">
-        <CardHeader class="flex flex-row items-center justify-between space-y-0 pb-2">
-          <div class="flex items-center gap-1">
-            <span class="text-md font-bold">Cotas</span>
-            <span class="text-md">Escolha sua sorte</span>
-          </div>
-        </CardHeader>
-        <CardContent>
-          
-        </CardContent>
-      </Card>
-      <Card class="col-span-4">
-        <CardHeader class="flex flex-row items-center justify-between space-y-0 pb-2">
-          <div class="flex items-center gap-1">
-            <span class="text-md font-bold">Cotas</span>
-            <span class="text-md">Escolha sua sorte</span>
-          </div>
-        </CardHeader>
-        <CardContent>
-          
+          </CardDescription>
         </CardContent>
       </Card>
 
-      
+      <UserStatsCard class="col-span-5" title="Cotas" description="Compre as cotas" icon="LucideTicket">
+        <CotasList />
+        <Separator orientation="horizontal" class="mt-5 mb-2" />
+        <PurchaseButtonGroup />
+      </UserStatsCard>
+
+      <UserStatsCard class="col-span-4" title="Mais Compradores" description="Pessoas que compraram mais cotas na rifa"
+        icon="LucidePartyPopper">
+        <TopBuyersList />
+      </UserStatsCard>
+
+      <UserStatsCard class="col-span-4" title="Premiados" description="Vencedores da rifa" icon="LucideTrophy">
+        <TopBuyersList />
+      </UserStatsCard>
     </div>
-
   </section>
-
 </template>
+
+<script setup lang="ts">
+import CotasList from '~/components/CotasList.vue';
+import Header from '~/components/Header.vue';
+import PurchaseButtonGroup from '~/components/PurchaseButtonGroup.vue';
+import TopBuyersList from '~/components/TopBuyersList.vue';
+import CardDescription from '~/components/ui/card/CardDescription.vue';
+import Separator from '~/components/ui/separator/Separator.vue'
+import UserStatsCard from '~/components/UserStatsCard.vue';
+</script>
