@@ -10,7 +10,8 @@ export default defineNuxtConfig({
     'nuxt-lucide-icons'
   ],
   plugins: [
-    '@/plugins/lucide.js'
+    '@/plugins/lucide.js',
+    '@/plugins/vue-the-mask.js'
   ],
   shadcn: {
     prefix: '',
